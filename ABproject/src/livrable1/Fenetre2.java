@@ -1,12 +1,15 @@
+package livrable1;
 import java.awt.Point;
 import java.util.Random;
 
+
 import javax.swing.JFrame;
 
-public class Fenetre2 extends JFrame {
 
+public class Fenetre2 extends JFrame {
+	
 	private Panneau pan = new Panneau();
-	private Point p1 = new Point(20, 350);
+	private Point p1 = new Point(20, 450);
 	/*
 	 * private Point p2 = new Point(140, 60); private Point p3 = new Point(800,
 	 * 450);
@@ -27,11 +30,18 @@ public class Fenetre2 extends JFrame {
 		this.setLocationRelativeTo(null);
 
 		this.setContentPane(pan);
-		
 		this.setVisible(true);
+		
 		for (int i = 0; i < 10; i++) {
+			
+			
 			go();
+			
+			
+			
 		}
+		
+		
 	}
 
 	public Point courbeBez(Point p, Point p1, Point p2, double t) {
@@ -45,11 +55,14 @@ public class Fenetre2 extends JFrame {
 	}
 
 	void go() {
+		
 		double t = 0;
 		do {
-			p2 = new Point(r.nextInt(this.getWidth()), r.nextInt(this.getHeight()));
-			p3 = new Point(r.nextInt(this.getWidth()), r.nextInt(this.getHeight()));
-		} while (p1.x > p3.x);
+			//p2 = new Point(r.nextInt(this.getWidth()), r.nextInt(this.getHeight()));
+			p2 = new Point(450, r.nextInt(this.getHeight()));
+			p3 = new Point(800, r.nextInt(this.getHeight()));
+			//p3 = new Point(r.nextInt(this.getWidth()), r.nextInt(this.getHeight()));
+		} while (p1.x > p3.x||p2.y > p3.y||p3.y>p1.y);
 		for (int i = 0; i < 100; i++) {
 			t = t + 0.01;
 			Point rep = new Point(courbeBez(p1, p2, p3, t));
@@ -58,19 +71,32 @@ public class Fenetre2 extends JFrame {
 			pan.setPosX(rep.x);
 
 			pan.setPosY(rep.y);
-
-			pan.repaint();
-
+			
+			this.repaint();
+			
+			
 			try {
 
 				Thread.sleep(40);
+				
 
 			} catch (InterruptedException e) {
 
 				e.printStackTrace();
 
 			}
+			
+			
+			
+			
+			 
 
+			
+			
+			
+			
 		}
 	}
+	
+	
 }
